@@ -18,17 +18,17 @@ public class SkillController {
     @Autowired
     private DAO dao;
 
-    @GetMapping("/skills")
+    @GetMapping("/getList")
     public List<Skill> findAll() {
         return dao.findAll();
     }
 
-    @GetMapping("/skills/{id}")
+    @GetMapping("/getSkill/{id}")
     public Skill findById(@PathVariable int id) {
         return dao.findById(id);
     }
 
-    @DeleteMapping("/skills/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteById(@PathVariable int id) {
         return dao.deleteById(id) + " Employee(s) delete from the database";
     }
@@ -38,7 +38,7 @@ public class SkillController {
         return dao.save(skill) + " Employee(s) saved successfully";
     }
 
-    @PutMapping("/skills/{id}")
+    @PutMapping("/edit/{id}")
     public String update(@RequestBody Skill skill, @PathVariable int id) {
         return dao.update(skill, id) + " Employee(s) updated successfully";
     }
