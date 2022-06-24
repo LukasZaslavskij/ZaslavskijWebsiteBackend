@@ -1,63 +1,32 @@
 package com.personalWebsite.ZaslavskijWebsite.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
-public class Skill implements Serializable {
+
+@Entity
+@Data
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="skills")
+public class Skill {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(nullable = false,updatable = false)
-    private int id;
-    @Column(nullable = false)
+    private Long id;
+    @Column( nullable = false)
     private String name;
     private String level;
     private String practise;
 
-    public Skill() {}
+    @OneToMany(targetEntity = Experience.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Experience> experiences;
 
-    public Skill(String name, String level, String practise) {
-        this.name = name;
-        this.level = level;
-        this.practise = practise;
-    }
 
-    public int getId() {
-        return id;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public String getPractise() {
-        return practise;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
-    }
-
-    public void setPractise(String practise) {
-        this.practise = practise;
-    }
-    @Override
-    public String toString(){
-        return "Skill{"+
-                "name='" + name + '\'' +
-                ",level='" + level + '\'' +
-                ",practise='" + practise + '\'' +
-                '}';
-    }
 }
