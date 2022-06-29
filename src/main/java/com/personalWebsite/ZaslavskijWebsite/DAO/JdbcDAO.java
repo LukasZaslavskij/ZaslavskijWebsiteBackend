@@ -1,3 +1,4 @@
+/*
 package com.personalWebsite.ZaslavskijWebsite.DAO;
 
 import com.personalWebsite.ZaslavskijWebsite.entity.Experience;
@@ -56,3 +57,4 @@ public int saveExperience(Experience experience){
         return jdbcTemplate.update("INSERT INTO experience (course,project ) VALUES (?,?)",new Object[]{experience.getCourse(),experience.getProject()});
         }
         }
+*/

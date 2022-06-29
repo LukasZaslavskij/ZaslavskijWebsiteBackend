@@ -44,7 +44,7 @@ class SkillTest {
         }
 */
 
-    @Test
+   /* @Test
     public void testFindByID(){
         Skill skill = jdbcDAO.findById(48);
         assertEquals(skill.getId(),48);
@@ -56,5 +56,5 @@ class SkillTest {
     public void testGettingAllSkills(){
         List<Skill> list = jdbcDAO.findAll();
         assertTrue(jdbcDAO.findAll().size()>0);
-    }
+    }*/
 }

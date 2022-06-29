@@ -1,3 +1,4 @@
+/*
 package com.personalWebsite.ZaslavskijWebsite.DAO;
 
 import com.personalWebsite.ZaslavskijWebsite.entity.Experience;
@@ -28,3 +29,4 @@ public interface DAO<T> {
     public int saveExperience(Experience experience);
 }
 
+*/
