@@ -11,6 +11,7 @@ import com.personalWebsite.ZaslavskijWebsite.entity.Skill;
 import com.personalWebsite.ZaslavskijWebsite.service.ExperienceService;
 import com.personalWebsite.ZaslavskijWebsite.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,18 +29,18 @@ public class SkillController {
     private ExperienceService experienceService;
 
     @PutMapping("/edit/{id}")
-    public void update(@RequestBody Skill skill, @PathVariable Long id) {
+    public void updateSkill(@RequestBody Skill skill, @PathVariable Long id) {
        skillService.updateSkill(skill,id);
     }
 
     @PostMapping("/add")
-    public Skill placeOrder(@RequestBody Skill skill){
+    public Skill saveSkill(@RequestBody Skill skill){
         return skillRepository.save(skill);
     }
 
     @GetMapping("/getList")
     public List<Skill> findAllOSkills(){
-        return skillRepository.findAll();
+        return skillRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     @GetMapping("/getSkill/{id}")

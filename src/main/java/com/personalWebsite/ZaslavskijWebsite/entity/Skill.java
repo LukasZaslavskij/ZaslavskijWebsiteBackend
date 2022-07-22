@@ -25,6 +25,7 @@ public class Skill {
     private String practise;
 
     @OneToMany(targetEntity = Experience.class, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id")
     private List<Experience> experiences;
 
 

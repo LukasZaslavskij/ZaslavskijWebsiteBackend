@@ -19,9 +19,7 @@ public class Experience {
     private Long id;
     private String course;
     private String project;
-
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
+    
     @ManyToOne
     private Skill skill;
 }
