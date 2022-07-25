@@ -17,9 +17,13 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, updatable = false)
     private Long id;
+    @Column(name="exp course")
     private String course;
+    @Column(name="exp project")
     private String project;
-    
-    @ManyToOne
-    private Skill skill;
+
+   // @ToString.Exclude
+    //@EqualsAndHashCode.Exclude
+    //@ManyToOne
+    //private Skill skill;
 }

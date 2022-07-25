@@ -17,11 +17,13 @@ import java.util.List;
 public class Skill {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false,updatable = false,name="id")
     private Long id;
-    @Column( nullable = false)
+    @Column( nullable = false,name="skill name")
     private String name;
+    @Column(name="skill level")
     private String level;
+    @Column(name="skill practise")
     private String practise;
 
     @OneToMany(targetEntity = Experience.class, cascade = CascadeType.ALL, orphanRemoval = true)
