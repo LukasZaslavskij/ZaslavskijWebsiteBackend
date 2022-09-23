@@ -1,17 +1,18 @@
-package com.personalWebsite.ZaslavskijWebsite.Controller;
+package com.personalWebsite.ZaslavskijWebsite.controller;
 
 
 
 import com.personalWebsite.ZaslavskijWebsite.DAO.ExperienceRepository;
 import com.personalWebsite.ZaslavskijWebsite.DAO.SkillRepository;
-import com.personalWebsite.ZaslavskijWebsite.Dto.OnlyExperienceDto;
 import com.personalWebsite.ZaslavskijWebsite.Dto.OnlySkillDto;
 import com.personalWebsite.ZaslavskijWebsite.entity.Experience;
 import com.personalWebsite.ZaslavskijWebsite.entity.Skill;
+import com.personalWebsite.ZaslavskijWebsite.kafka.kafkaSettings;
 import com.personalWebsite.ZaslavskijWebsite.service.ExperienceService;
 import com.personalWebsite.ZaslavskijWebsite.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +28,8 @@ public class SkillController {
     private ExperienceRepository experienceRepository;
     @Autowired
     private ExperienceService experienceService;
+    @Autowired
+    private kafkaSettings kafkaSettings;
 
     @PutMapping("/edit/{id}")
     public void updateSkill(@RequestBody Skill skill, @PathVariable Long id) {
@@ -47,6 +50,7 @@ public class SkillController {
     public Skill findById(@PathVariable Long id) {
         return skillRepository.findSkillById(id);
     }
+
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
          skillRepository.deleteById(id);
@@ -75,6 +79,11 @@ public class SkillController {
     @DeleteMapping("/deleteExperience/{id}")
     public void deleteExperienceById(@PathVariable Long id) {
         experienceRepository.deleteExperience(id);
+    }
+
+    @PostMapping(path = "send/hello")
+    public ResponseEntity<String> sendHello(@RequestBody String json) {
+        return kafkaSettings.sendJson("skill", json);
     }
 
 /*@GetMapping("/getList")

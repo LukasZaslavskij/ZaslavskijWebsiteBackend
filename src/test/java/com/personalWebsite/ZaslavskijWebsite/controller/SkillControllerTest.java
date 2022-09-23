@@ -11,18 +11,7 @@ import static org.mockito.ArgumentMatchers.any;
 
 @DataJpaTest
 public class SkillControllerTest {
-    @Autowired
-    private SkillRepository skillRepository;
 
-    @Test
-    void findByIdSkill() {
-
-        Skill skill = new Skill(82L, "jedna", "dva", "tri",any() );
-        Skill result = skillRepository.save(skill);
-        assertNotNull(result);
-        String resultName = skillRepository.findSkillById(1L).getName();
-        assertEquals(resultName,"jedna");
-    }
 
 //    @Test
 //    public void testSaveSkill() {

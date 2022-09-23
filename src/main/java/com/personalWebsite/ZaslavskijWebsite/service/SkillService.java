@@ -19,15 +19,13 @@ public class SkillService {
     @Autowired
     private ExperienceRepository experienceRepository;
 
-
-
     public void updateSkill(Skill skill,Long id){
         Skill mySkill = skillRepository.findSkillById(id);
         mySkill.setName(skill.getName());
         mySkill.setLevel(skill.getLevel());
         mySkill.setPractise(skill.getPractise());
-
         skillRepository.save(mySkill);
     }
+
 
 }

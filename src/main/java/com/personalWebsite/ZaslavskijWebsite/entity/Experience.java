@@ -22,6 +22,8 @@ public class Experience {
     @Column(name="exp project")
     private String project;
 
+    private Integer skill_id;
+
    // @ToString.Exclude
     //@EqualsAndHashCode.Exclude
     //@ManyToOne

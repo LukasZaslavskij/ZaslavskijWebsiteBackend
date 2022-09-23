@@ -3,10 +3,11 @@ import com.personalWebsite.ZaslavskijWebsite.entity.Experience;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.util.List;
-
+@Repository
 public interface ExperienceRepository extends JpaRepository<Experience, Long> {
     @Query("SELECT e from Skill s JOIN s.experiences e WHERE e.id = ?1")
     Experience findExperience(Long id);
